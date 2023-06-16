@@ -54,9 +54,9 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Build'){
-            parallel {
-                stage("Server package") {
+        // stage('Build'){
+        //     parallel {
+                stage("Build Server package") {
                     steps {
                         bat "npm cache clean --force && cd server && npm i --prod && cd .."
                     }
@@ -69,9 +69,9 @@ pipeline {
                         }
                     }
                 }
-                stage("Client package Image") {
+                stage("Build Client package Image") {
                     steps {
-                        bat "npm cache clean --force && cd server && npm i --prod && cd .."
+                        bat "npm cache clean --force && cd client && npm i --prod && cd .."
                     }
                     post {
                         success {
@@ -82,8 +82,8 @@ pipeline {
                         }
                     }
                 }
-            }
-        }
+        //     }
+        // }
         stage("Docker Image Build") {
             parallel {
                 stage("Server Image") {
