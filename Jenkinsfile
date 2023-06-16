@@ -58,7 +58,7 @@ pipeline {
             parallel {
                 stage("Server package") {
                     steps {
-                        bat "npm ci --prefix server --prod"
+                        bat "npm i --prefix server --prod"
                     }
                     post{
                         success {
@@ -71,7 +71,7 @@ pipeline {
                 }
                 stage("Client package Image") {
                     steps {
-                        bat "npm ci --prefix client --prod"
+                        bat "npm i --prefix client --prod"
                     }
                     post {
                         success {
