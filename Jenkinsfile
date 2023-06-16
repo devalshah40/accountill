@@ -88,7 +88,7 @@ pipeline {
             parallel {
                 stage("Server Image") {
                     steps {
-                        sh "docker build -t ${env.server_registry}:$BUILD_NUMBER -f server/Dockerfile ."
+                        bat "docker build -t ${env.server_registry}:$BUILD_NUMBER -f server/Dockerfile ."
                     }
                     post{
                         success {
@@ -101,7 +101,7 @@ pipeline {
                 }
                 stage("Client Image") {
                     steps {
-                        sh "docker build -t ${env.client_registry}:$BUILD_NUMBER -f client/Dockerfile ."
+                        bat "docker build -t ${env.client_registry}:$BUILD_NUMBER -f client/Dockerfile ."
                     }
                     post{
                         success {
@@ -212,7 +212,7 @@ pipeline {
 
         stage('Remove Unused docker server image') {
           steps{
-            sh "docker rmi $server_registry:$BUILD_NUMBER"
+            bat "docker rmi $server_registry:$BUILD_NUMBER"
           }
         }
 
@@ -237,7 +237,7 @@ pipeline {
 
         stage('Remove Unused docker client image') {
           steps{
-            sh "docker rmi $client_registry:$BUILD_NUMBER"
+            bat "docker rmi $client_registry:$BUILD_NUMBER"
           }
         }
 
