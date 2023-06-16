@@ -58,7 +58,7 @@ pipeline {
             parallel {
                 stage("Server package") {
                     steps {
-                        bat "cd server && npm i --prod && cd .."
+                        bat "npm cache clean --force && cd server && npm i --prod && cd .."
                     }
                     post{
                         success {
@@ -71,7 +71,7 @@ pipeline {
                 }
                 stage("Client package Image") {
                     steps {
-                        bat "cd server && npm i --prod && cd .."
+                        bat "npm cache clean --force && cd server && npm i --prod && cd .."
                     }
                     post {
                         success {
