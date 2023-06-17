@@ -11,4 +11,4 @@ COPY server/ .
 RUN npm install && npm install nodemon --save-dev
 
 EXPOSE 5000
-CMD ["yarn", "start-prod"]
+CMD ["yarn", "start"]

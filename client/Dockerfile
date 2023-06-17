@@ -4,8 +4,8 @@ ENV NODE_ENV production
 WORKDIR /app
 
 COPY client/package.json .
-COPY client/yarn.lock .
-RUN yarn install --production
+COPY client/package-lock.json .
+RUN npm install --production
 
 COPY client .
 
